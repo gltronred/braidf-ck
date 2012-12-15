@@ -1,14 +1,16 @@
 
 module Types where
 
+data Crossing = Sigma Int | Tau Int deriving (Eq, Show)
+
 data Braid = Braid { input :: Int
                    , work :: Int
                    , output :: Int
-                   , sigmas :: [(Int, Bool)] } deriving (Eq, Show)
+                   , sigmas :: [Crossing] } deriving (Eq, Show)
 
 data Data = Data [Perm] deriving (Eq, Show)
 
-newtype Perm = Perm [Int] deriving (Eq, Show)
+newtype Perm = Perm { cycles :: [[Int]] } deriving (Eq, Show)
 
 total braid = input braid + work braid + output braid
 

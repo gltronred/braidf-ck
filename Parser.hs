@@ -8,10 +8,7 @@ import Types
 
 number = many1 digit >>= return . read
 
-signed = do
-  sign <- optionMaybe $ char '-'
-  x <- number
-  return $ if isJust sign then -x else x
+sigma = optionMaybe (char '-') >>= \sign -> number >>= return . (if isJust sign then Tau else Sigma) . ((-) 1)
 
 braidDescription = do
   input <- number
@@ -30,7 +27,7 @@ math = do
   spaces
   (i,w,o) <- braidDescription
   newline
-  s <- signed`sepBy`space >>= return . map (\x -> (abs x, x>0))
+  s <- sigma`sepBy`space
   return (Braid i w o s)
 
 program :: Parsec String () Braid
