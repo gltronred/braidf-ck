@@ -117,7 +117,7 @@ Lines:
 	L33t 1 1 1
     1 2 -1 2
 
-equals to
+is equivalent to
 
 	Braid 0.1
 	Lines 1 1 1
