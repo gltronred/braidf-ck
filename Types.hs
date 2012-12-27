@@ -8,9 +8,9 @@ data Braid = Braid { input :: Int
                    , output :: Int
                    , sigmas :: [Crossing] } deriving (Eq, Show)
 
-data Data = Data [Perm] deriving (Eq, Show)
+data Data = Data [Perm] deriving (Eq)
 
-newtype Perm = Perm { cycles :: [[Int]] } deriving (Eq, Show)
+newtype Perm = Perm { cycles :: [[Int]] } deriving (Eq)
 
 total braid = input braid + work braid + output braid
 
